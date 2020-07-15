@@ -1,3 +1,5 @@
+import {useCustomers} from "./BusinessProvider.js"
+import {Business} from "./Business.js"
 
 
 
@@ -6,11 +8,10 @@ export const BusinessList = () => {
     const contentTarget = document.querySelector(".customers")
 
     const businessArray = useCustomers()
+    // contentTarget.innerHTML="" not necessary?
 
-    //don't need this line?
-    // contentTarget.innerHTML = "<h1>Art</h1>"
 
-    customers.forEach(
+    businessArray.forEach(
         (businessObject) => {
             contentTarget.innerHTML += Business(businessObject)
         }
