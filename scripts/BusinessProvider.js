@@ -115,10 +115,23 @@ export const useCustomers = () => {
     return customers.slice()
 }
 
-export const NYBusinesses = customers.filter(businessObj => {
-    if (businessObj.price === "NY") {
-        return true
-    }
-    return false
+//create new array that contains businesses from NY
+export const NYBusinessFilter = () => customers.filter(businessObj => {
+ 
+if (businessObj.addressStateCode === "NY") {
+    return businessObj
+}
 })
+
+// using for loop instead of filter 
+
+// const NYBusinessFilter = () => {
+//   let NYBusinessArray = []
+//   for (businessObj of customers) {
+//     if (businessObj.addressStateCode==="NY"){
+//         NYBusinessArray.push(businessObj)
+//     }
+//   }
+//   return NYBusinessArray
+// }
 

@@ -1,3 +1,5 @@
+//turns business object into HTML content
+
 export const Business = (businessObject) => {
     return `
         <section class="business">
@@ -16,3 +18,4 @@ export const Business = (businessObject) => {
         </section>
     `
 }
+

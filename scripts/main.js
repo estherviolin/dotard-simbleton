@@ -1,7 +1,4 @@
-import { useCustomers } from "./BusinessProvider.js"
-import {NYBusinessList} from "./BusinessList.js"
+import { NYBusinessList, BusinessList} from "./BusinessList.js"
 
-useCustomers()
-// BusinessList()
-
+BusinessList()
 NYBusinessList()
