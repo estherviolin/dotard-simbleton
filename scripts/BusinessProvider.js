@@ -140,3 +140,12 @@ export const manufactureFilter = () => customers.filter(businessObj => {
       return businessObj
     }
 })
+
+//function that returns new object with purchasing agent info
+// export const agentObjMaker = (businessObject) => {
+//   return {
+//       fullName: `${businessObject.purchasingAgent.nameFirst} ${businessObject.purchasingAgent.nameLast}`,
+//       company: `${businessObject.companyName}`,
+//       phoneNumber: `${businessObject.phoneWork}`
+//   }
+// }
