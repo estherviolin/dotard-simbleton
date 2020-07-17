@@ -124,7 +124,6 @@ if (businessObj.addressStateCode === "NY") {
 })
 
 // using for loop instead of filter 
-
 // const NYBusinessFilter = () => {
 //   let NYBusinessArray = []
 //   for (businessObj of customers) {
@@ -135,3 +134,9 @@ if (businessObj.addressStateCode === "NY") {
 //   return NYBusinessArray
 // }
 
+//create new array of businesses in manufacturing
+export const manufactureFilter = () => customers.filter(businessObj => {
+    if (businessObj.companyIndustry === "Manufacturing") {
+      return businessObj
+    }
+})

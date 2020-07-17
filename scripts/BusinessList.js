@@ -1,4 +1,4 @@
-import {NYBusinessFilter, useCustomers} from "./BusinessProvider.js"
+import {NYBusinessFilter, useCustomers, manufactureFilter} from "./BusinessProvider.js"
 import {Business} from "./Business.js"
 
 
@@ -21,9 +21,7 @@ export const NYBusinessList = () => {
             contentTarget.innerHTML += Business(businessObject))
         
 }
-
 // using for loop instead of forEach
-
 // const NYBusinessList = () => {
 //     const NYBusinessArray = NYBusinessFilter()
 //     const contentTarget = document.querySelector(".businessList--NewYork")
@@ -33,7 +31,14 @@ export const NYBusinessList = () => {
 //     }
 // }
 
+//creates HTML list of manufacturing 
+export const manufactureHTMLList = () => {
+    const arrOfManufacturers = manufactureFilter()
+    const contentTarget = document.querySelector(".businessList--manufacturing")
 
+    arrOfManufacturers.forEach(businessObject =>
+        contentTarget.innerHTML += Business(businessObject))
+}
 
 
 
