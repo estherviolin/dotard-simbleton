@@ -5,23 +5,24 @@ import {useCustomers} from "./BusinessProvider.js"
 
 const customers= useCustomers()
 
-// function that creates new array of purchasing agent objects
+// function that creates new array of purchasing agent objects from original array
 export const Agents = () => {
     
-    customers.map(businessObject => ({
-   
+    let newAgentsArray = customers.map(businessObject => {
+    return {
     fullName: `${businessObject.purchasingAgent.nameFirst} ${businessObject.purchasingAgent.nameLast}`,
-    company: businessObject.companyName,
-    phoneNumber: businessObject.phoneWork
-  
-  }))
+    company: `${businessObject.companyName}`,
+    phoneNumber: `${businessObject.phoneWork}`
+    }  
+  //should return new array
+  })
+  return newAgentsArray
 
 }
 
 export const AgentAsHTML = (agentObj) => {
     return `
-      <section class="agents">
-        <div class = "agent__name">${agentObj.fullName}</div>
+        <h2 class = "agent__name">${agentObj.fullName}</h2>
         <div class = "agent__company">${agentObj.company}</div>
         <div class = "agent__number">${agentObj.phoneNumber}</div>
       
