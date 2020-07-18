@@ -40,6 +40,35 @@ export const manufactureHTMLList = () => {
         contentTarget.innerHTML += Business(businessObject))
 }
 
+//add keypress event function
+export const keyPressFunction = () => {
+    //places search result under foundCompanies id
+    const companySearchResultArticle = document.querySelector(".foundCompanies")
+    //array from businessprovider.js
+    const businessArray = useCustomers()
 
+    document.querySelector("#companySearch").addEventListener("keypress", keyPressEvent => {
+    if (keyPressEvent.charCode===13) {
+        const foundBusiness = (searchCriteria) => {
+            return businessArray.find(business => business.companyName === searchCriteria)
+         }
+            companySearchResultArticle.innerHTML = `
+            <h2>
+            ${foundBusiness.companyName}
+            </h2>
+            <section>
+            ${foundBusiness.addressFullStreet}
+            </section>
+            <section>
+            ${foundBusiness.addressCity},
+            ${foundBusiness.addressStateCode}
+            ${foundBusiness.addressZipCode}
+            </section>
+            `
+        //undefined for some reason   
+    }
+    
+})
 
+}
 
