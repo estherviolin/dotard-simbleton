@@ -18,6 +18,18 @@ export const Agents = () => {
 
 }
 
+export const AgentAsHTML = (agentObj) => {
+    return `
+      <section class="agents">
+        <div class = "agent__name">${agentObj.fullName}</div>
+        <div class = "agent__company">${agentObj.company}</div>
+        <div class = "agent__number">${agentObj.phoneNumber}</div>
+      
+      `
+
+
+}
+
 
 
 

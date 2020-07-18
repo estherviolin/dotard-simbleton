@@ -7,4 +7,4 @@ manufactureHTMLList()
 
 const arrOfAgents = Agents()
 
-console.log(Agents)
+console.log(arrOfAgents)
