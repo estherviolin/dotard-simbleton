@@ -1,5 +1,14 @@
-import { useCustomers } from "./BusinessProvider.js"
-import {BusinessList} from "./BusinessList.js"
+import { NYBusinessList, BusinessList, manufactureHTMLList, keyPressFunction} from "./BusinessList.js"
+// import {Agents} from "./agents.js"
+import {AgentList} from "./AgentList.js"
 
-useCustomers()
+
 BusinessList()
+NYBusinessList()
+manufactureHTMLList()
+
+// const arrOfAgents = Agents()
+
+
+AgentList()
+keyPressFunction()
