@@ -1,4 +1,4 @@
-import {NYBusinessFilter, useCustomers, manufactureFilter} from "./BusinessProvider.js"
+import {NYBusinessFilter, useCustomers, manufactureFilter, useSearch} from "./BusinessProvider.js"
 import {Business} from "./Business.js"
 
 
@@ -40,18 +40,19 @@ export const manufactureHTMLList = () => {
         contentTarget.innerHTML += Business(businessObject))
 }
 
-//add keypress event function
+// //add keypress event function
 export const keyPressFunction = () => {
-    //places search result under foundCompanies id
+//     //places search result under foundCompanies id
     const companySearchResultArticle = document.querySelector(".foundCompanies")
-    //array from businessprovider.js
-    const businessArray = useCustomers()
 
     document.querySelector("#companySearch").addEventListener("keypress", keyPressEvent => {
     if (keyPressEvent.charCode===13) {
-        const foundBusiness = (searchCriteria) => {
-            return businessArray.find(business => business.companyName === searchCriteria)
-         }
+        // const foundBusiness = (searchCriteria) => {
+        //      businessArray.find(business => business.companyName === searchCriteria)
+        //  }
+        
+        const foundBusiness = useSearch(keyPressEvent.target.value)
+
             companySearchResultArticle.innerHTML = `
             <h2>
             ${foundBusiness.companyName}

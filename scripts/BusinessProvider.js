@@ -149,3 +149,11 @@ export const manufactureFilter = () => customers.filter(businessObj => {
 //       phoneNumber: `${businessObject.phoneWork}`
 //   }
 // }
+
+// function to search for business by  name
+export const useSearch = (inputString) => {
+  const searchObj = customers.find (business => {
+    return business.companyName.includes(inputString)
+  })
+  return searchObj
+}
