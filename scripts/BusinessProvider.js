@@ -161,19 +161,20 @@ export const manufactureFilter = () => customers.filter(businessObj => {
 
 
 // function to search for business by agent first name
-export const useSearch = (inputString) => {
-  const searchObj = customers.find (business => {
-    if (business.purchasingAgent.nameFirst.includes(inputString)) {
-     return business.purchasingAgent.nameFirst.includes(inputString) 
-    }
-    else if (business.purchasingAgent.nameLast.includes(inputString)) {
-      return business.purchasingAgent.nameLast.includes(inputString)
+// export const useSearch = (inputString) => {
+//   const searchObj = customers.find(business => {
+//     if (business.purchasingAgent.nameFirst.toLowerCase().includes(inputString.toLowerCase())) {
+//      return business
+//     }
+//     else if (business.purchasingAgent.nameLast.toLowerCase().includes(inputString.toLowerCase())) {
+//       return business
   
-    } 
-    else if (business.companyName.includes(inputString)) {
-      return business.companyName.includes(inputString)
-    }
+//     } 
+//     else if (business.companyName.toLowerCase().includes(inputString.toLowerCase())) {
+//       return business
+//     }
   
-  })
-  return searchObj
-}
+//   })
+//   return searchObj
+// }
+//moved inside of keyPressFunction on BusinessList.js

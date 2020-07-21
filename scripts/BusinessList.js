@@ -1,6 +1,6 @@
-import {NYBusinessFilter, useCustomers, useSearch} from "./BusinessProvider.js"
+import {NYBusinessFilter, useCustomers} from "./BusinessProvider.js"
 import {Business} from "./Business.js"
-import {AgentList} from "./AgentList.js"
+
 
 
 //creates HTML list of all businesses
@@ -67,7 +67,7 @@ export const NYBusinessList = () => {
 //             ${foundBusiness.addressZipCode}
 //             </section>
 //             `
-//         //undefined for some reason   
+//        
 //     }
     
 // })
@@ -75,16 +75,35 @@ export const NYBusinessList = () => {
 // }
 
 export const keyPressFunction = () => {
-    //     //places search result under foundCompanies id
-        const companySearchResultArticle = document.querySelector(".foundCompanies")
-    
-        document.querySelector("#agentSearch").addEventListener("keypress", keyPressEvent => {
+     //places search result under foundCompanies id
+    const companySearchResultArticle = document.querySelector(".foundCompanies")
+    const businessArray = useCustomers()
+    const searchQuery  = document.getElementById("searchBar").value
+
+    document.querySelector("#searchBar").addEventListener("keypress", keyPressEvent => {
         if (keyPressEvent.charCode===13) {
-            // const foundBusiness = (searchCriteria) => {
-            //      businessArray.find(business => business.companyName === searchCriteria)
-            //  }
             
-            const foundBusiness = useSearch(keyPressEvent.target.value)
+        const searchObjFunction = (inputString) => {
+            const searchObj = businessArray.find(business => {
+                if (business.purchasingAgent.nameFirst.toLowerCase().includes(inputString.toLowerCase())) {
+                   return business
+                  }
+                else if (business.purchasingAgent.nameLast.toLowerCase().includes(inputString.toLowerCase())) {
+                    return business
+                
+                  } 
+                else if (business.companyName.toLowerCase().includes(inputString.toLowerCase())) {
+                    return business
+                  }
+                
+                })
+                return searchObj
+            }
+
+
+            const foundBusiness = searchObjFunction(searchQuery)
+
+            if (foundBusiness !== undefined) {
     
                 companySearchResultArticle.innerHTML = `
                 <h2>
@@ -105,9 +124,14 @@ export const keyPressFunction = () => {
                 ${foundBusiness.addressZipCode}
                 </section>
                 `
-            //undefined for some reason   
+            }
+            else {
+                companySearchResultArticle.innerHTML = `<h2>No Results Found</h2>`
+            }  
         }
-        
-    })
     
-    }
+        
+})
+
+}
+ 
