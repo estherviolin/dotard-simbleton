@@ -1,5 +1,6 @@
-import {NYBusinessFilter, useCustomers, manufactureFilter, useSearch} from "./BusinessProvider.js"
+import {NYBusinessFilter, useCustomers, useSearch} from "./BusinessProvider.js"
 import {Business} from "./Business.js"
+import {AgentList} from "./AgentList.js"
 
 
 //creates HTML list of all businesses
@@ -31,45 +32,82 @@ export const NYBusinessList = () => {
 //     }
 // }
 
-//creates HTML list of manufacturing 
-export const manufactureHTMLList = () => {
-    const arrOfManufacturers = manufactureFilter()
-    const contentTarget = document.querySelector(".businessList--manufacturing")
+// //creates HTML list of manufacturing 
+// export const manufactureHTMLList = () => {
+//     const arrOfManufacturers = manufactureFilter()
+//     const contentTarget = document.querySelector(".businessList--manufacturing")
 
-    arrOfManufacturers.forEach(businessObject =>
-        contentTarget.innerHTML += Business(businessObject))
-}
+//     arrOfManufacturers.forEach(businessObject =>
+//         contentTarget.innerHTML += Business(businessObject))
+// }
 
-// //add keypress event function
-export const keyPressFunction = () => {
-//     //places search result under foundCompanies id
-    const companySearchResultArticle = document.querySelector(".foundCompanies")
+// // //add keypress event function
+// export const keyPressFunction = () => {
+// //     //places search result under foundCompanies id
+//     const companySearchResultArticle = document.querySelector(".foundCompanies")
 
-    document.querySelector("#companySearch").addEventListener("keypress", keyPressEvent => {
-    if (keyPressEvent.charCode===13) {
-        // const foundBusiness = (searchCriteria) => {
-        //      businessArray.find(business => business.companyName === searchCriteria)
-        //  }
+//     document.querySelector("#companySearch").addEventListener("keypress", keyPressEvent => {
+//     if (keyPressEvent.charCode===13) {
+//         // const foundBusiness = (searchCriteria) => {
+//         //      businessArray.find(business => business.companyName === searchCriteria)
+//         //  }
         
-        const foundBusiness = useSearch(keyPressEvent.target.value)
+//         const foundBusiness = useSearch(keyPressEvent.target.value)
 
-            companySearchResultArticle.innerHTML = `
-            <h2>
-            ${foundBusiness.companyName}
-            </h2>
-            <section>
-            ${foundBusiness.addressFullStreet}
-            </section>
-            <section>
-            ${foundBusiness.addressCity},
-            ${foundBusiness.addressStateCode}
-            ${foundBusiness.addressZipCode}
-            </section>
-            `
-        //undefined for some reason   
-    }
+//             companySearchResultArticle.innerHTML = `
+//             <h2>
+//             ${foundBusiness.companyName}
+//             </h2>
+//             <section>
+//             ${foundBusiness.addressFullStreet}
+//             </section>
+//             <section>
+//             ${foundBusiness.addressCity},
+//             ${foundBusiness.addressStateCode}
+//             ${foundBusiness.addressZipCode}
+//             </section>
+//             `
+//         //undefined for some reason   
+//     }
     
-})
+// })
 
-}
+// }
 
+export const keyPressFunction = () => {
+    //     //places search result under foundCompanies id
+        const companySearchResultArticle = document.querySelector(".foundCompanies")
+    
+        document.querySelector("#agentSearch").addEventListener("keypress", keyPressEvent => {
+        if (keyPressEvent.charCode===13) {
+            // const foundBusiness = (searchCriteria) => {
+            //      businessArray.find(business => business.companyName === searchCriteria)
+            //  }
+            
+            const foundBusiness = useSearch(keyPressEvent.target.value)
+    
+                companySearchResultArticle.innerHTML = `
+                <h2>
+                ${foundBusiness.companyName}
+                </h2>
+                <h3>
+                ${foundBusiness.purchasingAgent.nameFirst} ${foundBusiness.purchasingAgent.nameLast}
+                </h3>
+                <section>
+                ${foundBusiness.phoneWork}
+                </section>
+                <section>
+                ${foundBusiness.addressFullStreet}
+                </section>
+                <section>
+                ${foundBusiness.addressCity},
+                ${foundBusiness.addressStateCode}
+                ${foundBusiness.addressZipCode}
+                </section>
+                `
+            //undefined for some reason   
+        }
+        
+    })
+    
+    }

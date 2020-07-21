@@ -150,10 +150,30 @@ export const manufactureFilter = () => customers.filter(businessObj => {
 //   }
 // }
 
-// function to search for business by  name
+// // function to search for business by  name
+// export const useSearch = (inputString) => {
+//   const searchObj = customers.find (business => {
+//     return business.companyName.includes(inputString)
+//   })
+//   return searchObj
+// }
+
+
+
+// function to search for business by agent first name
 export const useSearch = (inputString) => {
   const searchObj = customers.find (business => {
-    return business.companyName.includes(inputString)
+    if (business.purchasingAgent.nameFirst.includes(inputString)) {
+     return business.purchasingAgent.nameFirst.includes(inputString) 
+    }
+    else if (business.purchasingAgent.nameLast.includes(inputString)) {
+      return business.purchasingAgent.nameLast.includes(inputString)
+  
+    } 
+    else if (business.companyName.includes(inputString)) {
+      return business.companyName.includes(inputString)
+    }
+  
   })
   return searchObj
 }
