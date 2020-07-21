@@ -1,11 +1,11 @@
-import { NYBusinessList, BusinessList, manufactureHTMLList, keyPressFunction} from "./BusinessList.js"
+import { NYBusinessList, BusinessList, keyPressFunction} from "./BusinessList.js"
 // import {Agents} from "./agents.js"
 import {AgentList} from "./AgentList.js"
 
 
 BusinessList()
 NYBusinessList()
-manufactureHTMLList()
+// manufactureHTMLList()
 
 // const arrOfAgents = Agents()
 
