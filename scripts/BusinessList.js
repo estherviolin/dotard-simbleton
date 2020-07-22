@@ -1,5 +1,5 @@
-import {NYBusinessFilter, useCustomers} from "./BusinessProvider.js"
-import {Business} from "./Business.js"
+import { NYBusinessFilter, useCustomers } from "./BusinessProvider.js"
+import { Business } from "./Business.js"
 
 
 
@@ -7,9 +7,9 @@ import {Business} from "./Business.js"
 export const BusinessList = () => {
     const contentTarget = document.querySelector(".customers")
     const businessArray = useCustomers()
-    contentTarget.innerHTML="" 
+    contentTarget.innerHTML = ""
     businessArray.forEach(businessObject => contentTarget.innerHTML += Business(businessObject))
- 
+
 }
 
 //creates HTML list of NY businesses using forEach
@@ -18,9 +18,9 @@ export const NYBusinessList = () => {
     const NYBusinessArray = NYBusinessFilter()
     const contentTarget = document.querySelector(".businessList--NewYork")
 
-    NYBusinessArray.forEach(businessObject => 
-            contentTarget.innerHTML += Business(businessObject))
-        
+    NYBusinessArray.forEach(businessObject =>
+        contentTarget.innerHTML += Business(businessObject))
+
 }
 // using for loop instead of forEach
 // const NYBusinessList = () => {
@@ -51,7 +51,7 @@ export const NYBusinessList = () => {
 //         // const foundBusiness = (searchCriteria) => {
 //         //      businessArray.find(business => business.companyName === searchCriteria)
 //         //  }
-        
+
 //         const foundBusiness = useSearch(keyPressEvent.target.value)
 
 //             companySearchResultArticle.innerHTML = `
@@ -69,33 +69,26 @@ export const NYBusinessList = () => {
 //             `
 //        
 //     }
-    
+
 // })
 
 // }
 
 export const keyPressFunction = () => {
-     //places search result under foundCompanies id
+    //places search result under foundCompanies id
     const companySearchResultArticle = document.querySelector(".foundCompanies")
     const businessArray = useCustomers()
-    const searchQuery  = document.getElementById("searchBar").value
+    
 
     document.querySelector("#searchBar").addEventListener("keypress", keyPressEvent => {
-        if (keyPressEvent.charCode===13) {
-            
-        const searchObjFunction = (inputString) => {
-            const searchObj = businessArray.find(business => {
-                if (business.purchasingAgent.nameFirst.toLowerCase().includes(inputString.toLowerCase())) {
-                   return business
-                  }
-                else if (business.purchasingAgent.nameLast.toLowerCase().includes(inputString.toLowerCase())) {
-                    return business
-                
-                  } 
-                else if (business.companyName.toLowerCase().includes(inputString.toLowerCase())) {
-                    return business
-                  }
-                
+        if (keyPressEvent.charCode === 13) {
+            const searchQuery = document.getElementById("searchBar").value
+
+            const searchObjFunction = (inputString) => {
+                const searchObj = businessArray.find(business => {
+                    if (business.purchasingAgent.nameFirst.toLowerCase().includes(inputString.toLowerCase()) || business.purchasingAgent.nameLast.toLowerCase().includes(inputString.toLowerCase()) || business.companyName.toLowerCase().includes(inputString.toLowerCase())) {
+                        return business
+                    }
                 })
                 return searchObj
             }
@@ -104,7 +97,7 @@ export const keyPressFunction = () => {
             const foundBusiness = searchObjFunction(searchQuery)
 
             if (foundBusiness !== undefined) {
-    
+
                 companySearchResultArticle.innerHTML = `
                 <h2>
                 ${foundBusiness.companyName}
@@ -127,11 +120,11 @@ export const keyPressFunction = () => {
             }
             else {
                 companySearchResultArticle.innerHTML = `<h2>No Results Found</h2>`
-            }  
+            }
         }
-    
-        
-})
+
+
+    })
 
 }
- 
+
